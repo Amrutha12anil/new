@@ -3,6 +3,7 @@
 <head>
   <title>Us 💖</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <style>
     body {
       text-align: center;
@@ -12,34 +13,89 @@
       overflow: hidden;
     }
 
+    h1 {
+      font-size: 26px;
+      color: #7a003c;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 22px;
+      color: #9d174d;
+    }
+
+    .memory {
+      font-size: 18px;
+      color: #5a0033;
+      margin: 25px auto;
+      max-width: 620px;
+      line-height: 1.7;
+      background: rgba(255,255,255,0.6);
+      padding: 18px;
+      border-radius: 18px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      position: relative;
+      height: 120px; /* space for sliding button */
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 24px;
+      margin: 10px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      position: absolute;
+      background: #ffe0ea;
+      transition: all 0.2s ease;
+    }
+
+    #message {
+      display: none;
+      font-size: 22px;
+      margin-top: 25px;
+      color: #7a003c;
+    }
+
     /* Mobile size adjustment */
-@media (max-width: 600px) {
-  h1 {
-    font-size: 22px;
-  }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
 
-  h2 {
-    font-size: 18px;
-  }
+      h2 {
+        font-size: 18px;
+      }
 
-  .memory {
-    font-size: 15px;
-    padding: 14px;
-  }
+      .memory {
+        font-size: 15px;
+        padding: 14px;
+      }
 
-  button {
-    font-size: 15px;
-    padding: 10px 18px;
-    border-radius: 16px;
-  }
+      button {
+        font-size: 15px;
+        padding: 10px 18px;
+        border-radius: 16px;
+      }
 
-  #message {
-    font-size: 18px;
-  }
-}
-
+      #message {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
+
 <body>
 
 <h2>Hey oshuuuu 💕</h2>
@@ -62,8 +118,10 @@
   I’d still find you. I’d still choose you. Always. ♾️
 </div>
 
-<button id="yesBtn" onclick="yesClicked()">Always ❤️</button>
-<button id="noBtn">Not today 😝</button>
+<div class="buttons">
+  <button id="yesBtn" onclick="yesClicked()">Always ❤️</button>
+  <button id="noBtn">Not today 😝</button>
+</div>
 
 <div id="message">
   ♾️ Still us. Still strong.<br>
@@ -73,25 +131,24 @@
 <script>
   const noBtn = document.getElementById("noBtn");
 
-  // give initial position
-  noBtn.style.left = "50%";
-  noBtn.style.top = "70%";
-  noBtn.style.transform = "translate(-50%, -50%)";
+  /* Initial position */
+  noBtn.style.left = "60%";
+  noBtn.style.top = "40px";
 
   function moveNoButton() {
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
   }
 
-  // MOBILE
+  /* Mobile */
   noBtn.addEventListener("touchstart", function (e) {
     e.preventDefault();
     moveNoButton();
   });
 
-  // DESKTOP
+  /* Desktop */
   noBtn.addEventListener("mouseenter", moveNoButton);
 
   function yesClicked() {
@@ -99,7 +156,6 @@
     alert("Always us 💖 Forever ♾️");
   }
 </script>
-
 
 </body>
 </html>
