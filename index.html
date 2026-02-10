@@ -12,48 +12,32 @@
       overflow: hidden;
     }
 
-    h1 { font-size: 26px; color: #7a003c; }
-    h2 { font-size: 22px; color: #9d174d; }
+    /* Mobile size adjustment */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+  }
 
-    .memory {
-      font-size: 18px;
-      color: #5a0033;
-      margin: 25px auto;
-      max-width: 620px;
-      line-height: 1.7;
-      background: rgba(255,255,255,0.5);
-      padding: 18px;
-      border-radius: 16px;
-    }
+  h2 {
+    font-size: 18px;
+  }
 
-    button {
-      font-size: 18px;
-      padding: 12px 24px;
-      margin: 10px;
-      border-radius: 20px;
-      border: none;
-      cursor: pointer;
-      position: relative;
-    }
+  .memory {
+    font-size: 15px;
+    padding: 14px;
+  }
 
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-    }
+  button {
+    font-size: 15px;
+    padding: 10px 18px;
+    border-radius: 16px;
+  }
 
-    #noBtn {
-      position: absolute;
-      background: #ffe0ea;
-      transition: all 0.15s ease;
+  #message {
+    font-size: 18px;
+  }
+}
 
-    }
-
-    #message {
-      display: none;
-      font-size: 22px;
-      margin-top: 25px;
-      color: #7a003c;
-    }
   </style>
 </head>
 <body>
