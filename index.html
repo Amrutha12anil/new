@@ -10,7 +10,8 @@
       font-family: 'Arial', sans-serif;
       background: linear-gradient(#ffb3c6, #ffe5ec);
       padding: 40px 20px;
-      overflow: hidden;
+      margin: 0;
+      /* ❌ removed overflow hidden so scrolling works */
     }
 
     h1 {
@@ -38,7 +39,7 @@
     .buttons {
       margin-top: 30px;
       position: relative;
-      height: 120px; /* space for sliding button */
+      height: 140px; /* area where No button moves */
     }
 
     button {
@@ -68,15 +69,10 @@
       color: #7a003c;
     }
 
-    /* Mobile size adjustment */
+    /* Mobile adjustments */
     @media (max-width: 600px) {
-      h1 {
-        font-size: 22px;
-      }
-
-      h2 {
-        font-size: 18px;
-      }
+      h1 { font-size: 22px; }
+      h2 { font-size: 18px; }
 
       .memory {
         font-size: 15px;
@@ -86,7 +82,6 @@
       button {
         font-size: 15px;
         padding: 10px 18px;
-        border-radius: 16px;
       }
 
       #message {
@@ -108,13 +103,13 @@
   sheriya vazhakk ondakkarond pakshe  
   enik ninnod mindathe irikkan pattathilla....  
   <br>
-  ittit poyekkalle...🙂
+  ittit poyekkalle...🙂  
   <br><br>
   And if I had to start all over again…  
   I’d still find you. I’d still choose you. Always. ♾️
 </div>
 
-<div class="buttons">
+<div class="buttons" id="btnArea">
   <button id="yesBtn" onclick="yesClicked()">Always ❤️</button>
   <button id="noBtn">Not today 😝</button>
 </div>
@@ -126,14 +121,19 @@
 
 <script>
   const noBtn = document.getElementById("noBtn");
+  const area = document.getElementById("btnArea");
 
-  /* Initial position */
-  noBtn.style.left = "60%";
-  noBtn.style.top = "40px";
+  /* initial position */
+  noBtn.style.left = "120px";
+  noBtn.style.top = "60px";
 
   function moveNoButton() {
-    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
-    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+    const maxX = area.clientWidth - noBtn.offsetWidth;
+    const maxY = area.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
   }
