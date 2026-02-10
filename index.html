@@ -89,21 +89,33 @@
 <script>
   const noBtn = document.getElementById("noBtn");
 
+  // give initial position
+  noBtn.style.left = "50%";
+  noBtn.style.top = "70%";
+  noBtn.style.transform = "translate(-50%, -50%)";
+
   function moveNoButton() {
-    const x = Math.random() * (window.innerWidth - 150);
-    const y = Math.random() * (window.innerHeight - 150);
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
   }
 
-  noBtn.addEventListener("touchstart", moveNoButton);
-  noBtn.addEventListener("mouseover", moveNoButton);
+  // MOBILE
+  noBtn.addEventListener("touchstart", function (e) {
+    e.preventDefault();
+    moveNoButton();
+  });
+
+  // DESKTOP
+  noBtn.addEventListener("mouseenter", moveNoButton);
 
   function yesClicked() {
     document.getElementById("message").style.display = "block";
     alert("Always us 💖 Forever ♾️");
   }
 </script>
+
 
 </body>
 </html>
